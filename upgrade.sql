@@ -1,4 +1,4 @@
-# emlog pro database upgrade sql
+# emlog lite database upgrade sql
 
 # 修改已有字段
 # -- eg: ALTER TABLE {db_prefix}blog CHANGE COLUMN comnum comnum int(10) unsigned NOT NULL default '0';

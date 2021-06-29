@@ -26,7 +26,7 @@
 <div id="wrapper">
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion sd-hidden" id="accordionSidebar">
         <li class="nav-item active emlog_title" id="menu_home">
-            <a class="nav-link" href="./">EMLOG PRO</a>
+            <a class="nav-link" href="./">emlog lite</a>
         </li>
         <hr class="sidebar-divider my-0">
 		<?php if (ROLE == ROLE_ADMIN): ?>
