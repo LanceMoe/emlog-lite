@@ -51,7 +51,7 @@
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             EMLOG
 							<?php if (ISREG === false) : ?>
-                                <a href="register.php"><span class="badge badge-danger"><?php echo Option::EMLOG_VERSION; ?> 未注册, 点击去注册</span></a>
+                                <span class="badge badge-danger"><?php echo Option::EMLOG_VERSION; ?> 未注册, 点击去注册</span>
 							<?php else: ?>
                                 <span class="badge badge-success"><?php echo Option::EMLOG_VERSION; ?> 已注册</span>
 							<?php endif; ?>
@@ -85,7 +85,7 @@
                         <div>4、"投我以桃，报之以李"，支持我们把emlog做的更好。</div>
                     </div>
                     <div class="card-footer text-center">
-                        <a href="register.php" class="btn btn-sm btn-success shadow-lg">现在去注册</a>
+                        <a href="#" class="btn btn-sm btn-success shadow-lg">现在去注册</a>
                     </div>
                 </div>
 			<?php endif; ?>
@@ -114,7 +114,7 @@
             $.get("./upgrade.php?action=check_update",
                 function (result) {
                     if (result.code == 1001) {
-                        $("#upmsg").html("您的emlog pro尚未注册，<a href=\"register.php\">去注册</a>").removeClass();
+                        $("#upmsg").html("您的emlog pro尚未注册").removeClass();
                     } else if (result.code == 1002) {
                         $("#upmsg").html("已是最新版本").removeClass();
                     } else if (result.code == 200) {

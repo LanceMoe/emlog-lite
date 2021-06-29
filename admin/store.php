@@ -13,7 +13,7 @@ require_once 'globals.php';
 
 if (empty($action)) {
 	$emcurl = new EmCurl();
-	$emcurl->setPost(['emkey' => Option::get('emkey'), 'ver' => Option::EMLOG_VERSION,]);
+	$emcurl->setPost(['ver' => Option::EMLOG_VERSION,]);
 	$emcurl->request(OFFICIAL_SERVICE_HOST . 'store/pro');
 	$retStatus = $emcurl->getHttpStatus();
 	if ($retStatus !== MSGCODE_SUCCESS) {
@@ -23,11 +23,6 @@ if (empty($action)) {
 	$ret = json_decode($response, 1);
 	if (empty($ret)) {
 		emDirect("./store.php?action=error&error=1");
-	}
-	if ($ret['code'] === MSGCODE_EMKEY_INVALID) {
-		Option::updateOption('emkey', '');
-		$CACHE->updateCache('options');
-		emDirect("./register.php?error_store=1");
 	}
 
 	$templates = $ret['data']['templates'] ?? [];

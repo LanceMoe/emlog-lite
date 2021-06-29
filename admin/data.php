@@ -214,7 +214,6 @@ function checkBOM($contents) {
 }
 
 if ($action == 'Cache') {
-	Register::isRegServer();
 	$CACHE->updateCache();
 	emDirect('./data.php?active_mc=1');
 }

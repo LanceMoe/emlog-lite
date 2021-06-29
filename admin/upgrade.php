@@ -14,7 +14,6 @@ require_once 'globals.php';
 if ($action === 'check_update') {
 	$emcurl = new EmCurl();
 	$emcurl->setPost([
-		'emkey'     => Option::get('emkey'),
 		'version'   => Option::EMLOG_VERSION,
 		'timestamp' => Option::EMLOG_VERSION_TIMESTAMP,
 	]);

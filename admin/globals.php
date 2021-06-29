@@ -21,7 +21,7 @@ $sta_cache = $CACHE->readCache('sta');
 $user_cache = $CACHE->readCache('user');
 $action = isset($_GET['action']) ? addslashes($_GET['action']) : '';
 
-define('ISREG', Register::isRegLocal());
+define('ISREG', true);
 
 if ($action == 'login') {
 	$username = isset($_POST['user']) ? addslashes(trim($_POST['user'])) : '';
@@ -32,7 +32,6 @@ if ($action == 'login') {
 	$loginAuthRet = LoginAuth::checkUser($username, $password, $img_code);
 
 	if ($loginAuthRet === true) {
-		Register::isRegServer();
 		LoginAuth::setAuthCookie($username, $ispersis);
 		emDirect("./");
 	} else {
@@ -52,8 +51,4 @@ if (ISLOGIN === false) {
 $request_uri = strtolower(substr(basename($_SERVER['SCRIPT_NAME']), 0, -4));
 if (ROLE === ROLE_WRITER && !in_array($request_uri, array('article_write', 'article', 'attachment', 'blogger', 'comment', 'index', 'article_save'))) {
 	emMsg('权限不足！', './');
-}
-
-if (!ISREG && mt_rand(1,10) === 10) {
-	emDirect("register.php");
 }
