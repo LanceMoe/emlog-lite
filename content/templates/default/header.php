@@ -1,7 +1,7 @@
 <?php
 /*
 Template Name:默认模板
-Description:这是emlog pro的默认模板
+Description:这是emlog lite的默认模板
 Author:emlog
 Author Url:http://www.emlog.net
 */

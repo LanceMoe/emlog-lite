@@ -1,7 +1,7 @@
 <?php
 
 class EmCurl {
-	protected $_useragent = 'emlog pro';
+	protected $_useragent = 'emlog lite';
 	protected $_url;
 	protected $_followlocation = false;
 	protected $_timeout;

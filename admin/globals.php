@@ -12,16 +12,10 @@
 require_once '../init.php';
 
 const TEMPLATE_PATH = EMLOG_ROOT . '/admin/views/';              //后台模板路径
-const OFFICIAL_SERVICE_HOST = 'https://www.emlog.net/';          //官方服务域名
-const MSGCODE_EMKEY_INVALID = 1001;                              // 错误的注册码
-const MSGCODE_NO_UPUPDATE = 1002;                                // 没有可用的版本更新
-const MSGCODE_SUCCESS = 200;                                     // 成功
 
 $sta_cache = $CACHE->readCache('sta');
 $user_cache = $CACHE->readCache('user');
 $action = isset($_GET['action']) ? addslashes($_GET['action']) : '';
-
-define('ISREG', Register::isRegLocal());
 
 if ($action == 'login') {
 	$username = isset($_POST['user']) ? addslashes(trim($_POST['user'])) : '';
@@ -32,7 +26,6 @@ if ($action == 'login') {
 	$loginAuthRet = LoginAuth::checkUser($username, $password, $img_code);
 
 	if ($loginAuthRet === true) {
-		Register::isRegServer();
 		LoginAuth::setAuthCookie($username, $ispersis);
 		emDirect("./");
 	} else {
@@ -52,8 +45,4 @@ if (ISLOGIN === false) {
 $request_uri = strtolower(substr(basename($_SERVER['SCRIPT_NAME']), 0, -4));
 if (ROLE === ROLE_WRITER && !in_array($request_uri, array('article_write', 'article', 'attachment', 'blogger', 'comment', 'index', 'article_save'))) {
 	emMsg('权限不足！', './');
-}
-
-if (!ISREG && mt_rand(1,10) === 10) {
-	emDirect("register.php");
 }

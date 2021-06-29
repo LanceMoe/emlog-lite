@@ -661,12 +661,17 @@ function chImageSize($img, $max_w, $max_h) {
 }
 
 /**
- * 获取Gravatar头像，使用Gravatar国内镜像源：极客族公共加速服务 https://cdn.geekzu.org/donate.html
+ * 获取Gravatar头像
  * http://en.gravatar.com/site/implement/images/
+ * @param $email
+ * @param $s size
+ * @param $d default avatar
+ * @param $g
  */
-function getGravatar($email, $s = 40) {
-	$hash = md5($email);
-	return "http://sdn.geekzu.org/avatar/$hash?s=$s";
+function getGravatar($email, $s = 40, $d = 'mm', $g = 'g') {
+    $hash = md5($email);
+    $avatar = "https://cn.gravatar.com/avatar/$hash?s=$s&d=$d&r=$g";
+    return $avatar;
 }
 
 /**
